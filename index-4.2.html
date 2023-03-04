@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="crudApp">
+
+<head>
+  <style>
+    /* Center the title */
+    h1 {
+      text-align: center;
+    }
+    body {
+        background-color: #eccb0c; /* Use any valid color code */
+      }
+      button {
+        background-color: #e25513; /* Use any valid color code */
+        color: rgb(8, 1, 1);
+      }
+  </style>
+  <meta charset="UTF-8">
+  <title>FOOTBALL PLAYERS</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+  <script src="app.js"></script>
+</head>
+
+<body>
+  <h1>FOOTBALL PLAYERS</h1>
+  <div ng-controller="crudController">
+    <form ng-submit="submitForm()">
+      <h2>{{formTitle}}</h2>
+      <label for="name">PLAYER NAME:</label>
+      <input type="text" id="name" name="name" ng-model="formData.name" required>
+      <label for="email">PLAYER EMAIL:</label>
+      <input type="email" id="email" name="email" ng-model="formData.email" required>
+      <button type="submit">{{formButton}}</button>
+    </form>
+    <hr>
+    <table>
+      <thead>
+        <tr>
+          <th>PLAYER NAME</th>
+          <th>PLAYER EMAIL</th>
+          <th>EDIT OR DETELE PLAYER DETAILS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="person in people">
+          <td>{{person.name}}</td>
+          <td>{{person.email}}</td>
+          <td>
+            <button ng-click="editPerson(person)">EDIT PLAYER</button>
+            <button ng-click="deletePerson(person)">DELETE PLAYER</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+
+</html>
